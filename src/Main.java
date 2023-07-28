@@ -24,7 +24,20 @@ public class Main {
         // Loop permainan utama
         while (!tebakBerhasil && (System.currentTimeMillis() - startTime < duration)) {
             System.out.print("\nMulai tebak angka: ");
-            int angka = input.nextInt();
+            int angka;
+            // Validasi inputan harus berupa angka
+            if(input.hasNextInt()){
+                angka = input.nextInt(); // Inputan angka
+            }else {
+                System.out.println("Inputan harus angka");
+                input.next(); // Mengonsumsi input yang salah agar tidak masuk ke dalam loop tak terbatas
+                continue;
+            }
+            // Validasi inputan angka tidak boleh lebih dari 100 atau kurang dari 0
+            if (angka<0 || angka >100){
+                System.out.println("Inputan diantara 1 - 100 ");
+                continue;
+            }
             percobaan++;
 
             // Membandingkan tebakan pengguna dengan angka acak
